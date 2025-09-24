@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Hyper-V-Common.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.PowerShell.SDK" Version="7.5.3" />
+		<PackageReference Include="System.Diagnostics.EventLog" Version="9.0.9" />
+		<PackageReference Include="System.Management" Version="9.0.9" />
+		<PackageReference Include="System.Management.Automation" Version="7.4.7" />
+	</ItemGroup>
+
+</Project>
