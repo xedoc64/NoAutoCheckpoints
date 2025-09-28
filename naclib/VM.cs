@@ -7,10 +7,13 @@ namespace naclib
     {
         private string _id;
 
-        private ManagementObject _vm;
+        private ManagementObject? _vm;
 
-        private ManagementObject _machineSettings;
-        public ManagementObject MachineSettings { get { return _machineSettings; } }
+        private ManagementObject? _machineSettings;
+        public ManagementObject? MachineSettings { get { return _machineSettings; } }
+
+        private static VMHelper NACUtils = new VMHelper();
+
 
         private bool _autoSnapshotEnabled; 
         public bool AutoSnapshotEnabled
@@ -35,16 +38,16 @@ namespace naclib
                 throw new ArgumentNullException("vmID is empty");
             }
 
-            VMHelper NASUtils = new VMHelper();
-
-            _vm = NASUtils.GetVMbyID(vmID);
+            _vm = NACUtils.GetVMbyID(vmID);
             if (_vm == null)
             {
                 throw new InvalidOperationException("Error on accessing vm");
             }
             _id = vmID;
 
-            _machineSettings = VMHelper.GetVirtualMachineSettings(_vm);
+            _machineSettings = NACUtils.GetVirtualMachineSettings(_vm);
+
+            //_machineSettings = VMHelper.GetVirtualMachineSettings(_vm);
             if (_machineSettings == null)
             {
                 throw new InvalidOperationException("Error on accessing machine settings");
@@ -61,36 +64,59 @@ namespace naclib
             }
         }
 
-        public bool SetAutosnapshot(bool setting)
+        public string SetAutoCheckpoints()
         {
-            int boolHelper;
-            bool success = false;
-            switch (setting)
+            string message = string.Empty;
+            if (_machineSettings != null)
             {
-                case true:
-                    boolHelper = 1; break;
-                case false:
-                    boolHelper = 0; break;
+                _machineSettings["AutomaticSnapshotsEnabled"] = false;
+                try
+                {
+                    uint returnCode = NACUtils.SetVirtualMachineSettings(_machineSettings);
+                    if (returnCode != 0)
+                    {
+                        message = "Error on setting vm AutomaticSnapshotsEnabled to false";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    message = ex.Message;
+                }
             }
 
-            try
-            {
-                using(var ps = PowerShell.Create(RunspaceMode.NewRunspace))
-                {
-                    ps.AddCommand("Get-VM")
-                        .AddParameter("Id", String.Format("{0}", _id))
-                    .AddCommand("Set-VM")
-                        .AddParameter("AutomaticCheckpointsEnabled", boolHelper)
-                    .Invoke();
-                }
-                success = true;
-            }
-            catch
-            {
-                success = false;
-            }
-            
-            return success;
+            return message;
         }
+
+        //public string SetAutosnapshot(bool setting)
+        //{
+        //    int boolHelper;
+        //    string success = "";
+        //    switch (setting)
+        //    {
+        //        case true:
+        //            boolHelper = 1; break;
+        //        case false:
+        //            boolHelper = 0; break;
+        //    }
+
+        //    try
+        //    {
+        //        using (var ps = PowerShell.Create(RunspaceMode.NewRunspace))
+        //        {
+        //            ps.AddCommand("Get-VM")
+        //                .AddParameter("Id", String.Format("{0}", _id))
+        //            .AddCommand("Set-VM")
+        //                .AddParameter("AutomaticCheckpointsEnabled", boolHelper)
+        //            .Invoke();
+        //        }
+        //        success = "";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        success = ex.Message;
+        //    }
+
+        //    return success;
+        //}
     }
 }

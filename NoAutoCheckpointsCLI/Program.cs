@@ -5,18 +5,17 @@ using System.Diagnostics.Eventing.Reader;
 
 class Program
 {
-    private static EventLogWatcher watcher = null;
+    private static EventLogWatcher? watcher = null;
     private static string eventLogPath = "Microsoft-Windows-Hyper-V-VMMS-Admin";
     private static string eventLogQuery = "*[System[(EventID=13002 or EventID=18304)]]";
-    private static naclib.VM vm = null;
+    private static naclib.VM? vm = null;
+
 
     static void Main(string[] args)
     {
-        bool endApp = false;
-
         SetupStaticLogger();
 
-        Log.Information("NoSnapshotCLI started");
+        Log.Information("NoAutoCheckpointsCLI started");
 
         naclib.PermissionCheck permissionCheck = new naclib.PermissionCheck();
 
@@ -89,11 +88,12 @@ class Program
         }
         catch (EventLogReadingException e)
         {
-            // Stop listening to events
-            watcher.Enabled = false;
+            Log.Fatal("Error on subscribe to the event log: {0}", e.Message);
 
             if (watcher != null)
             {
+                // Stop listening to events
+                watcher.Enabled = false;
                 watcher.Dispose();
             }
             return false;
@@ -105,7 +105,7 @@ class Program
         if (e.EventRecord != null)
         {
             // disable the watcher to prevent that the watcher is fired twice
-            watcher.Enabled = false;
+            DisableWatcher(watcher);
             string[] xPathRefs = new string[1];
             xPathRefs[0] = "Event/UserData/VmlEventLog/VmId";
 
@@ -118,24 +118,35 @@ class Program
             vm = new naclib.VM((string)logEventProps[0]);
             Log.Information("New VM detected. ID: {0}", logEventProps[0]);
             Log.Information("AutoSnaphot: {0}", vm.AutoSnapshotEnabled);
-            if (vm.SetAutosnapshot(false))
+            string setVM = vm.SetAutoCheckpoints();
+            if (string.IsNullOrEmpty(setVM))
             {
                 Log.Information("Disable automatic checkpoints successfull");
             }
             else
             {
-                Log.Error("Disable automatic checkpoints failed");
+                Log.Error("Disable automatic checkpoints failed. Error: {0}", setVM);
             }
-            watcher.Enabled = true;
+            EnableWatcher(watcher);
         }
     }
 
-    private static void DisableWatcher(EventLogWatcher watcher)
+    private static void DisableWatcher(EventLogWatcher? watcher)
     {
         if (watcher != null)
         {
             Log.Debug("watcher disabled");
             watcher.Enabled = false;
+            watcher.Dispose();
+        }
+    }
+
+    private static void EnableWatcher(EventLogWatcher? watcher)
+    {
+        if (watcher != null)
+        {
+            Log.Debug("watcher enabled");
+            watcher.Enabled = true;
             watcher.Dispose();
         }
     }

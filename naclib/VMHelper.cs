@@ -1,5 +1,8 @@
-﻿using System.Diagnostics.Eventing.Reader;
+﻿using Microsoft.Management.Infrastructure;
+using System.Diagnostics.Eventing.Reader;
 using System.Management;
+using System.Runtime;
+using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
 
 namespace naclib
 {
@@ -8,16 +11,16 @@ namespace naclib
 
     internal class VMHelper
     {
-        private ManagementScope scope = new ManagementScope(@"root\virtualization\v2", null);
+        private readonly ManagementScope scope = new ManagementScope(@"root\virtualization\v2", null);
 
-        public ManagementObject GetVMbyID(string ID)
+        public ManagementObject? GetVMbyID(string ID)
         {
             string query = String.Format("select * from Msvm_ComputerSystem where Name = '{0}'", ID);
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, new ObjectQuery(query));
             ManagementObjectCollection vms = searcher.Get();
             if (vms.Count > 0)
             {
-                ManagementObject vm = GetFirstObjectFromCollection(vms);
+                ManagementObject? vm = GetFirstObjectFromCollection(vms);
                 if (vm != null)
                 {
                     return vm;
@@ -26,14 +29,14 @@ namespace naclib
             return null;
         }
 
-        public ManagementObject GetVMbyName(string Name)
+        public ManagementObject? GetVMbyName(string Name)
         {
             string query = String.Format("select * from Msvm_ComputerSystem where ElementName = '{0}'", Name);
             ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, new ObjectQuery(query));
             ManagementObjectCollection vms = searcher.Get();
             if (vms.Count > 0)
             {
-                ManagementObject vm = GetFirstObjectFromCollection(vms);
+                ManagementObject? vm = GetFirstObjectFromCollection(vms);
                 if (vm != null)
                 {
                     return vm;
@@ -42,7 +45,7 @@ namespace naclib
             return null;
         }
 
-        private static ManagementObject GetFirstObjectFromCollection(ManagementObjectCollection collection)
+        private static ManagementObject? GetFirstObjectFromCollection(ManagementObjectCollection collection)
         {
             if (collection.Count == 0)
             {
@@ -57,14 +60,14 @@ namespace naclib
             return null;
         }
 
-        public static ManagementObject GetVirtualMachineSettings(ManagementObject virtualMachine)
+        public ManagementObject? GetVirtualMachineSettings(ManagementObject virtualMachine)
         {
             using (ManagementObjectCollection settingsCollection = 
                 virtualMachine.GetRelated("Msvm_VirtualSystemSettingData", "Msvm_SettingsDefineState",
                     null, null, null, null, false, null))
             {
 
-                ManagementObject settingData = null;
+                ManagementObject? settingData = null;
 
                 foreach (ManagementObject data in settingsCollection)
                 {
@@ -73,6 +76,25 @@ namespace naclib
 
                 return settingData;
             }
+        }
+
+        public uint SetVirtualMachineSettings(ManagementObject vmSettings)
+        {
+            uint returnValue = 2;
+            ManagementObjectSearcher serviceSearcher = new ManagementObjectSearcher(scope!, new ObjectQuery("SELECT * FROM Msvm_VirtualSystemManagementService"));
+            if (serviceSearcher != null)
+            {
+                ManagementObject? managementService = serviceSearcher.Get().Cast<ManagementObject>().FirstOrDefault();
+                if (managementService != null)
+                {
+                    ManagementBaseObject inParams = managementService.GetMethodParameters("ModifySystemSettings");
+                    inParams["SystemSettings"] = vmSettings.GetText(TextFormat.WmiDtd20);
+
+                    ManagementBaseObject outParams = managementService.InvokeMethod("ModifySystemSettings", inParams, null);
+                    returnValue = (uint)outParams["ReturnValue"];
+                }   
+            }
+            return returnValue;
         }
     }
 }

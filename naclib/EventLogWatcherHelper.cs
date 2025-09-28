@@ -9,7 +9,7 @@ namespace naclib
 {
     internal class EventLogWatcherHelper
     {
-        private EventLogWatcher watcher = null;
+        private EventLogWatcher? watcher = null;
         private string logPath = "Microsoft-Windows-Hyper-V-VMMS-Admin";
         private string logQuery = "*[System[(EventID=13002 or EventID=18304)]]";
 
@@ -38,13 +38,12 @@ namespace naclib
                 //}
                 return true;
             }
-            catch (EventLogReadingException e)
+            catch (EventLogReadingException)
             {
-                // Stop listening to events
-                watcher.Enabled = false;
-
                 if (watcher != null)
                 {
+                    // Stop listening to events
+                    watcher.Enabled = false;
                     watcher.Dispose();
                 }
                 return false;
@@ -56,7 +55,7 @@ namespace naclib
             if (e.EventRecord != null)
             {
                 // disable the watcher to prevent that the watcher is fired twice
-                watcher.Enabled = false;
+                disableWatcher(watcher);
                 string[] xPathRefs = new string[1];
                 xPathRefs[0] = "Event/UserData/VmlEventLog/VmId";
 
@@ -66,9 +65,23 @@ namespace naclib
 
                 IList<object> logEventProps = ((EventLogRecord)e.EventRecord).GetPropertyValues(logPropertyContext);
 
-                // do stuff here
+                enableWatcher(watcher);
+            }
+        }
 
+        private void enableWatcher(EventLogWatcher? watcher)
+        {
+            if (watcher != null)
+            {
                 watcher.Enabled = true;
+            }
+        }
+
+        private void disableWatcher(EventLogWatcher? watcher)
+        {
+            if (watcher != null)
+            {
+                watcher.Enabled = false;
             }
         }
     }

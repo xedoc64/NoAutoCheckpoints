@@ -42,7 +42,7 @@ namespace naclib
             {
                 WindowsPrincipal principal = new WindowsPrincipal(identity);
                 List<Claim> list = new List<Claim>(principal.UserClaims);
-                Claim c = list.Find(p => p.Value.Contains("S-1-5-32-578"));
+                Claim? c = list.Find(p => p.Value.Contains("S-1-5-32-578"));
                 if (c != null)
                     return true;
             }
