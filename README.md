@@ -2,6 +2,10 @@
 This windows service disables "automatic checkpoints" for a Hyper-V VM when the VM is created. By default, this setting is enabled per default in new created Hyper-V VMs in Windows 11.
 <br>
 
+## Prerequisites
+
+.NET 8 (will be installed when used the installer and .NET 8 is not present on the system)
+
 
 ## Usage
 Install the Windows Service with the setup or download the 7z and use install it manually `NoAutoCheckpointsSVC.exe --installService`. You can also start the service with `--startService` (only valid with --installService)
