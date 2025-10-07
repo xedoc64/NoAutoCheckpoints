@@ -54,7 +54,8 @@ namespace NoAutoCheckpointsSVC
 
         private static void SetupStaticLogger()
         {
-            if (!File.Exists(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + $"\appsettings.json"))
+            string SettingsFile = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\appsettings.json";
+            if (!File.Exists(SettingsFile))
             {
                 string source = "NoAutoCheckpointsSVC";
                 string logName = "Application";
@@ -64,7 +65,7 @@ namespace NoAutoCheckpointsSVC
                     EventLog.CreateEventSource(source, logName);
                 }
 
-                EventLog.WriteEntry(source, "appsettings.json not found. Logging will not work.", EventLogEntryType.Warning);
+                EventLog.WriteEntry(source, $"{SettingsFile} not found. Logging will not work.", EventLogEntryType.Warning);
             }
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true)
