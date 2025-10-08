@@ -1,18 +1,19 @@
-﻿using Microsoft.Management.Infrastructure;
-using System.Diagnostics.Eventing.Reader;
-using System.Management;
-using System.Runtime;
-using static Microsoft.ApplicationInsights.MetricDimensionNames.TelemetryContext;
+﻿using System.Management;
 
 namespace naclib
 {
-    
-
-
+    /// <summary>
+    /// Helper class which retrives/stores setting data from/to the VM
+    /// </summary>
     internal class VMHelper
     {
         private readonly ManagementScope scope = new ManagementScope(@"root\virtualization\v2", null);
 
+        /// <summary>
+        /// Get the VM object be VM ID
+        /// </summary>
+        /// <param name="ID">ID from the VM</param>
+        /// <returns>ManagementObject which contains the VM</returns>
         public ManagementObject? GetVMbyID(string ID)
         {
             string query = String.Format("select * from Msvm_ComputerSystem where Name = '{0}'", ID);
@@ -29,6 +30,11 @@ namespace naclib
             return null;
         }
 
+        /// <summary>
+        /// Get the VM object be VM Name. Currently not used. Can be used to implement an ignore list
+        /// </summary>
+        /// <param name="Name">Name from the VM</param>
+        /// <returns>ManagementObject which contains the VM</returns>
         public ManagementObject? GetVMbyName(string Name)
         {
             string query = String.Format("select * from Msvm_ComputerSystem where ElementName = '{0}'", Name);
@@ -45,6 +51,12 @@ namespace naclib
             return null;
         }
 
+        /// <summary>
+        /// Retreive the VM from a collection
+        /// </summary>
+        /// <param name="collection">collection of VMs</param>
+        /// <returns>First found ManagementObject which contains the VM</returns>
+        /// <exception cref="ArgumentException"></exception>
         private static ManagementObject? GetFirstObjectFromCollection(ManagementObjectCollection collection)
         {
             if (collection.Count == 0)
@@ -60,9 +72,14 @@ namespace naclib
             return null;
         }
 
+        /// <summary>
+        /// Get the VM settings
+        /// </summary>
+        /// <param name="virtualMachine">ManagementObject which needs to contain the VM</param>
+        /// <returns>ManagementObject which contains the settings data</returns>
         public ManagementObject? GetVirtualMachineSettings(ManagementObject virtualMachine)
         {
-            using (ManagementObjectCollection settingsCollection = 
+            using (ManagementObjectCollection settingsCollection =
                 virtualMachine.GetRelated("Msvm_VirtualSystemSettingData", "Msvm_SettingsDefineState",
                     null, null, null, null, false, null))
             {
@@ -78,6 +95,11 @@ namespace naclib
             }
         }
 
+        /// <summary>
+        /// Set the VM settings
+        /// </summary>
+        /// <param name="vmSettings">ManagementObject which contains the settings data</param>
+        /// <returns>uint return code for ModifySystemSettings</returns>
         public uint SetVirtualMachineSettings(ManagementObject vmSettings)
         {
             uint returnValue = 2;
@@ -92,7 +114,7 @@ namespace naclib
 
                     ManagementBaseObject outParams = managementService.InvokeMethod("ModifySystemSettings", inParams, null);
                     returnValue = (uint)outParams["ReturnValue"];
-                }   
+                }
             }
             return returnValue;
         }

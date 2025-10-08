@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.Hosting;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace NoAutoCheckpointsSVC
+﻿namespace NoAutoCheckpointsSVC
 {
     public class Worker(NacSVC service, IConfiguration configuration) : BackgroundService
     {

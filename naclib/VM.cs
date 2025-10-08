@@ -1,8 +1,10 @@
 ﻿using System.Management;
-using System.Management.Automation;
 
 namespace naclib
 {
+    /// <summary>
+    /// Object representation of vm
+    /// </summary>
     public class VM
     {
         private string _id;
@@ -14,9 +16,11 @@ namespace naclib
 
         private static VMHelper NACUtils = new VMHelper();
 
-
-        private bool _autoSnapshotEnabled; 
-        public bool AutoSnapshotEnabled
+        /// <summary>
+        /// Property for automatic checkpoints
+        /// </summary>
+        private bool _autoCheckpointEnabled; 
+        public bool AutoCheckpointsEnabled
         {
             get 
             {
@@ -26,11 +30,17 @@ namespace naclib
                 }
                 else
                 {
-                    return _autoSnapshotEnabled;
+                    return _autoCheckpointEnabled;
                 }
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="vmID">ID from the VM. ID is in the event log</param>
+        /// <exception cref="ArgumentNullException">Thrown if vmID is empty</exception>
+        /// <exception cref="InvalidOperationException">Thrown if an error occurs on accessing the vm</exception>
         public VM(string vmID) 
         {
             if (string.IsNullOrEmpty(vmID))
@@ -46,8 +56,6 @@ namespace naclib
             _id = vmID;
 
             _machineSettings = NACUtils.GetVirtualMachineSettings(_vm);
-
-            //_machineSettings = VMHelper.GetVirtualMachineSettings(_vm);
             if (_machineSettings == null)
             {
                 throw new InvalidOperationException("Error on accessing machine settings");
@@ -56,14 +64,18 @@ namespace naclib
             var tmp = _machineSettings["AutomaticSnapshotsEnabled"];
             if (tmp != null)
             {
-                _autoSnapshotEnabled = (bool)tmp;
+                _autoCheckpointEnabled = (bool)tmp;
             }
             else
             {
-                _autoSnapshotEnabled = false;
+                _autoCheckpointEnabled = false;
             }
         }
 
+        /// <summary>
+        /// Currently disable the checkpoint
+        /// </summary>
+        /// <returns>Return the exception message on error</returns>
         public string SetAutoCheckpoints()
         {
             string message = string.Empty;
@@ -86,37 +98,5 @@ namespace naclib
 
             return message;
         }
-
-        //public string SetAutosnapshot(bool setting)
-        //{
-        //    int boolHelper;
-        //    string success = "";
-        //    switch (setting)
-        //    {
-        //        case true:
-        //            boolHelper = 1; break;
-        //        case false:
-        //            boolHelper = 0; break;
-        //    }
-
-        //    try
-        //    {
-        //        using (var ps = PowerShell.Create(RunspaceMode.NewRunspace))
-        //        {
-        //            ps.AddCommand("Get-VM")
-        //                .AddParameter("Id", String.Format("{0}", _id))
-        //            .AddCommand("Set-VM")
-        //                .AddParameter("AutomaticCheckpointsEnabled", boolHelper)
-        //            .Invoke();
-        //        }
-        //        success = "";
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        success = ex.Message;
-        //    }
-
-        //    return success;
-        //}
     }
 }
