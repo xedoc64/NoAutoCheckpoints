@@ -333,3 +333,6 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 *.wsb
+
+setup/NoAutoCheckpoints-cache
+setup/NoAutoCheckpoints-SetupFiles
