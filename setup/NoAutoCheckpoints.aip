@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="23.1" version="23.1" Modules="professional" RootPath="." Language="en" Id="{621D32A0-55BB-4419-8D09-3047C46EF5BF}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_PREDEF_LCONDS_PROPS" Value="AI_DETECTED_INTERNET_CONNECTION"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPURLINFOABOUT" Value="https://github.com/xedoc64/NoAutoCheckpoints"/>
+    <ROW Property="Manufacturer" Value="xedoc64"/>
+    <ROW Property="ProductCode" Value="1033:{746684FC-CCE5-4B64-A8C4-E3E1F9B140CC} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="NoAutoCheckpoints"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Options="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{F0CD8438-AE00-4857-99DD-AF49D9EF2E9D}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT60Display" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1" DirectoryOptions="3"/>
+    <ROW Directory="SVC_Dir" Directory_Parent="APPDIR" DefaultDir="SVC" DirectoryOptions="3"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="browser_Dir" Directory_Parent="runtimes_Dir" DefaultDir="browser" DirectoryOptions="3"/>
+    <ROW Directory="lib_1_Dir" Directory_Parent="win_Dir" DefaultDir="lib" DirectoryOptions="3"/>
+    <ROW Directory="lib_Dir" Directory_Parent="browser_Dir" DefaultDir="lib" DirectoryOptions="3"/>
+    <ROW Directory="net8.0_1_Dir" Directory_Parent="lib_1_Dir" DefaultDir="net8.0" DirectoryOptions="3"/>
+    <ROW Directory="net8.0_Dir" Directory_Parent="lib_Dir" DefaultDir="net8.0" DirectoryOptions="3"/>
+    <ROW Directory="ref_Dir" Directory_Parent="SVC_Dir" DefaultDir="ref" DirectoryOptions="3"/>
+    <ROW Directory="runtimes_Dir" Directory_Parent="SVC_Dir" DefaultDir="runtimes" DirectoryOptions="3"/>
+    <ROW Directory="win_Dir" Directory_Parent="runtimes_Dir" DefaultDir="win" DirectoryOptions="3"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.SideBySideGuidComponent">
+    <ROW Component="APPDIR" Value="{29FB3694-20B2-4199-846B-7CBBF896F716}"/>
+    <ROW Component="ProductInformation" Value="{2131693B-84AE-4927-9CFC-68F15ECF4905}"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="A0BFC224E0E9125ADE0B2DBF343" ComponentId="{009BAB75-5205-43D3-8CD5-68C644343E2E}" Directory_="APPDIR" Attributes="260" KeyPath="A0BFC224E0E9125ADE0B2DBF343" Options="2"/>
+    <ROW Component="APPDIR" ComponentId="{29FB3694-20B2-4199-846B-7CBBF896F716}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="Microsoft.Extensions.Configuration.Abstractions.dll" ComponentId="{20236136-A5CD-4DD1-9151-B16EF3BE99C8}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.Configuration.Binder.dll" ComponentId="{D992EB2B-B9D1-424E-8738-CF289AD44E96}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.Binder.dll"/>
+    <ROW Component="Microsoft.Extensions.Configuration.CommandLine.dll" ComponentId="{605CD974-1E52-4B07-B4B7-FBE322CBBE7E}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.CommandLine.dll"/>
+    <ROW Component="Microsoft.Extensions.Configuration.EnvironmentVariables.dll" ComponentId="{00B356E1-DA57-49B0-A10D-1968B8208A1D}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.EnvironmentVariables.dll"/>
+    <ROW Component="Microsoft.Extensions.Configuration.FileExtensions.dll" ComponentId="{4B276C99-3F81-447D-9CC8-F790985B69D6}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.FileExtensions.dll"/>
+    <ROW Component="Microsoft.Extensions.Configuration.Json.dll" ComponentId="{DF1FF940-9608-4E7A-8688-4AA2585687F9}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.Json.dll"/>
+    <ROW Component="Microsoft.Extensions.Configuration.UserSecrets.dll" ComponentId="{0F076330-C0AD-4A13-BDC1-5333F7BA523B}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.UserSecrets.dll"/>
+    <ROW Component="Microsoft.Extensions.Configuration.dll" ComponentId="{58DE8055-BFEB-4305-9564-D3D49191A559}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Configuration.dll"/>
+    <ROW Component="Microsoft.Extensions.DependencyInj_1_ection.dll" ComponentId="{12C5A23B-216E-4B81-BC76-9E3B84A7168C}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.DependencyInjection.dll"/>
+    <ROW Component="Microsoft.Extensions.DependencyInjection.Abstractions.dll" ComponentId="{1D2F75FE-A4B5-4E1F-BF61-679F3F07F093}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.DependencyInjection.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.DependencyModel.dll" ComponentId="{8F0C90C0-870D-4C8A-BDBE-D57C14E01F7F}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.DependencyModel.dll"/>
+    <ROW Component="Microsoft.Extensions.Diagnostics.Abstractions.dll" ComponentId="{CC828EAC-1530-489E-B3B5-8CF5FE75905A}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Diagnostics.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.Diagnostics.dll" ComponentId="{3BFB33C3-F885-4D92-A05E-B84CAA41134E}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Diagnostics.dll"/>
+    <ROW Component="Microsoft.Extensions.FileProviders.Abstractions.dll" ComponentId="{72F0E37F-FFD3-4133-A451-6663FCF79B65}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.FileProviders.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.FileProviders.Physical.dll" ComponentId="{F8FD7E83-0C1D-4CEF-AD26-5C75CB89A476}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.FileProviders.Physical.dll"/>
+    <ROW Component="Microsoft.Extensions.FileSystemGlobbing.dll" ComponentId="{2018BBF8-00F1-4418-A85B-E8A9B6C69E2B}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.FileSystemGlobbing.dll"/>
+    <ROW Component="Microsoft.Extensions.Hosting.Abstractions.dll" ComponentId="{F66E9A8F-DE54-4833-9DF6-4790639CD4B3}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Hosting.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.Hosting.WindowsServices.dll" ComponentId="{CDB9939D-C226-4D45-894A-75FDEB45391C}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Hosting.WindowsServices.dll"/>
+    <ROW Component="Microsoft.Extensions.Hosting.dll" ComponentId="{C1D5C7FE-8F1F-45AC-8311-E458CC055A25}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Hosting.dll"/>
+    <ROW Component="Microsoft.Extensions.Logging.Abstractions.dll" ComponentId="{789BF3E8-9DBA-4378-A492-0924F3D0FBBF}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Logging.Abstractions.dll"/>
+    <ROW Component="Microsoft.Extensions.Logging.Configuration.dll" ComponentId="{7C046345-BD1E-453A-8D67-EC1C31A24505}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Logging.Configuration.dll"/>
+    <ROW Component="Microsoft.Extensions.Logging.Console.dll" ComponentId="{08CFDFB4-F6EE-451B-9E79-C64A0F5711E5}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Logging.Console.dll"/>
+    <ROW Component="Microsoft.Extensions.Logging.Debug.dll" ComponentId="{67A83F29-D295-42A5-A0CA-3304FB7BACE4}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Logging.Debug.dll"/>
+    <ROW Component="Microsoft.Extensions.Logging.EventLog.dll" ComponentId="{AD0BC114-E1F9-4043-B7AD-01050E557F58}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Logging.EventLog.dll"/>
+    <ROW Component="Microsoft.Extensions.Logging.EventSource.dll" ComponentId="{9BD8F5F3-E283-4DC6-962A-462F9DDCB18D}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Logging.EventSource.dll"/>
+    <ROW Component="Microsoft.Extensions.Logging.dll" ComponentId="{E836D7F5-CBC5-4DED-A807-42070B96721A}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Logging.dll"/>
+    <ROW Component="Microsoft.Extensions.Options.ConfigurationExtensions.dll" ComponentId="{E5A45688-AB39-48C8-BB62-61989426B9E1}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Options.ConfigurationExtensions.dll"/>
+    <ROW Component="Microsoft.Extensions.Options.dll" ComponentId="{9952ACBD-3D40-4CC3-B8C3-CE525815742B}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Options.dll"/>
+    <ROW Component="Microsoft.Extensions.Primitives.dll" ComponentId="{9DFC68E5-4AB4-4002-BD63-549963F4F67A}" Directory_="SVC_Dir" Attributes="0" KeyPath="Microsoft.Extensions.Primitives.dll"/>
+    <ROW Component="NoAutoCheckpointsSVC.dll" ComponentId="{0FD07C70-DC4E-437D-81D2-5A3A5CA8C29D}" Directory_="SVC_Dir" Attributes="256" KeyPath="NoAutoCheckpointsSVC.dll"/>
+    <ROW Component="NoAutoCheckpointsSVC.exe" ComponentId="{C92CDB4C-A8C8-4123-B2CF-2291677B8D24}" Directory_="SVC_Dir" Attributes="256" KeyPath="NoAutoCheckpointsSVC.exe"/>
+    <ROW Component="NoAutoCheckpointsSVC.runtimeconfig.json" ComponentId="{AD251471-4236-47F9-9F57-69CBBC1CE584}" Directory_="SVC_Dir" Attributes="0" KeyPath="NoAutoCheckpointsSVC.runtimeconfig.json" Type="0"/>
+    <ROW Component="ProductInformation" ComponentId="{2131693B-84AE-4927-9CFC-68F15ECF4905}" Directory_="APPDIR" Attributes="260" KeyPath="Version"/>
+    <ROW Component="Serilog.Settings.Configuration.dll" ComponentId="{F07450F8-4A83-4C29-96B5-E9B2DBCCCD15}" Directory_="SVC_Dir" Attributes="0" KeyPath="Serilog.Settings.Configuration.dll"/>
+    <ROW Component="Serilog.Sinks.Console.dll" ComponentId="{DDFDD107-EB1A-49A7-A676-6FD291AA9FD9}" Directory_="SVC_Dir" Attributes="0" KeyPath="Serilog.Sinks.Console.dll"/>
+    <ROW Component="Serilog.Sinks.File.dll" ComponentId="{D4D3001A-951A-4695-900B-58AD2B8ADB43}" Directory_="SVC_Dir" Attributes="0" KeyPath="Serilog.Sinks.File.dll"/>
+    <ROW Component="Serilog.dll" ComponentId="{553DDB01-FD71-4602-BD68-52ECB4AC3B15}" Directory_="SVC_Dir" Attributes="0" KeyPath="Serilog.dll"/>
+    <ROW Component="System.CodeDom.dll" ComponentId="{0662662D-DB74-4B40-9EE2-DB5E5132D267}" Directory_="SVC_Dir" Attributes="0" KeyPath="System.CodeDom.dll"/>
+    <ROW Component="System.Diagnostics.DiagnosticSource.dll" ComponentId="{F207640A-DF31-4141-A05A-C8E802A1239F}" Directory_="SVC_Dir" Attributes="0" KeyPath="System.Diagnostics.DiagnosticSource.dll"/>
+    <ROW Component="System.Diagnostics.EventLog.Messages.dll" ComponentId="{CA0A1691-7693-477B-ADD9-51BE088D129B}" Directory_="net8.0_1_Dir" Attributes="0" KeyPath="System.Diagnostics.EventLog.Messages.dll"/>
+    <ROW Component="System.Diagnostics.EventLog.dll" ComponentId="{48A74B7D-4839-4E4C-840C-C256E4E837BF}" Directory_="SVC_Dir" Attributes="0" KeyPath="System.Diagnostics.EventLog.dll"/>
+    <ROW Component="System.Diagnostics.EventLog.dll_1" ComponentId="{9347B29A-E635-4852-BFE3-4B70038605F3}" Directory_="net8.0_1_Dir" Attributes="0" KeyPath="System.Diagnostics.EventLog.dll_1"/>
+    <ROW Component="System.IO.Pipelines.dll" ComponentId="{FC42AB36-01B2-4BA2-90DA-DC6B90327D0E}" Directory_="SVC_Dir" Attributes="0" KeyPath="System.IO.Pipelines.dll"/>
+    <ROW Component="System.Management.dll" ComponentId="{DE03A3DE-D082-4B58-8446-CA886BBD320C}" Directory_="SVC_Dir" Attributes="0" KeyPath="System.Management.dll"/>
+    <ROW Component="System.Management.dll_1" ComponentId="{B6850B16-5E14-4D8D-950A-9BBCD486A221}" Directory_="net8.0_1_Dir" Attributes="0" KeyPath="System.Management.dll_1"/>
+    <ROW Component="System.ServiceProcess.ServiceContr_1_oller.dll" ComponentId="{006C50E4-DCC8-4F7F-AD5E-09383085A8B3}" Directory_="net8.0_1_Dir" Attributes="0" KeyPath="System.ServiceProcess.ServiceContr_1_oller.dll"/>
+    <ROW Component="System.ServiceProcess.ServiceController.dll" ComponentId="{B49AAC01-B25A-480F-8F70-55A3B9A4B178}" Directory_="SVC_Dir" Attributes="0" KeyPath="System.ServiceProcess.ServiceController.dll"/>
+    <ROW Component="System.Text.Encodings.Web.dll" ComponentId="{A1A1A926-63C6-4F23-823F-0B09CD67F73B}" Directory_="SVC_Dir" Attributes="0" KeyPath="System.Text.Encodings.Web.dll"/>
+    <ROW Component="System.Text.Encodings.Web.dll_1" ComponentId="{927EEB77-64E5-4453-9248-DC6F6F2F881A}" Directory_="net8.0_Dir" Attributes="0" KeyPath="System.Text.Encodings.Web.dll_1"/>
+    <ROW Component="System.Text.Json.dll" ComponentId="{A9D338FB-B86D-4E9E-BF08-B6B203CD4CBF}" Directory_="SVC_Dir" Attributes="0" KeyPath="System.Text.Json.dll"/>
+    <ROW Component="naclib.dll" ComponentId="{0520D66B-BF05-4D89-BF6A-271D5F668F3B}" Directory_="SVC_Dir" Attributes="256" KeyPath="naclib.dll"/>
+    <ROW Component="ref" ComponentId="{59E2C8FD-CA84-4C1D-BD37-0F6DFFBD4FD0}" Directory_="ref_Dir" Attributes="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="A0BFC224E0E9125ADE0B2DBF343" Title=".NET Desktop Runtime 8.0.20 x64" Description=".NET Desktop Runtime 8.0.20 x64" Display="3" Level="1" Attributes="0"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="A0BFC224E0E9125ADE0B2DBF343"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="NoAutoCheckpointsSVC.exe" Component_="NoAutoCheckpointsSVC.exe" FileName="NOAUTO~1.EXE|NoAutoCheckpointsSVC.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\NoAutoCheckpointsSVC.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="NoAutoCheckpointsSVC.runtimeconfig.json" Component_="NoAutoCheckpointsSVC.runtimeconfig.json" FileName="NOAUTO~1.JSO|NoAutoCheckpointsSVC.runtimeconfig.json" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\NoAutoCheckpointsSVC.runtimeconfig.json" SelfReg="false"/>
+    <ROW File="Serilog.dll" Component_="Serilog.dll" FileName="Serilog.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Serilog.dll" SelfReg="false"/>
+    <ROW File="Serilog.Settings.Configuration.dll" Component_="Serilog.Settings.Configuration.dll" FileName="SERILO~1.DLL|Serilog.Settings.Configuration.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Serilog.Settings.Configuration.dll" SelfReg="false"/>
+    <ROW File="Serilog.Sinks.Console.dll" Component_="Serilog.Sinks.Console.dll" FileName="SERILO~2.DLL|Serilog.Sinks.Console.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Serilog.Sinks.Console.dll" SelfReg="false"/>
+    <ROW File="Serilog.Sinks.File.dll" Component_="Serilog.Sinks.File.dll" FileName="SERILO~3.DLL|Serilog.Sinks.File.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Serilog.Sinks.File.dll" SelfReg="false"/>
+    <ROW File="System.CodeDom.dll" Component_="System.CodeDom.dll" FileName="SYSTEM~1.DLL|System.CodeDom.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\System.CodeDom.dll" SelfReg="false"/>
+    <ROW File="System.Diagnostics.DiagnosticSource.dll" Component_="System.Diagnostics.DiagnosticSource.dll" FileName="SYSTEM~2.DLL|System.Diagnostics.DiagnosticSource.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\System.Diagnostics.DiagnosticSource.dll" SelfReg="false"/>
+    <ROW File="System.Diagnostics.EventLog.dll" Component_="System.Diagnostics.EventLog.dll" FileName="SYSTEM~3.DLL|System.Diagnostics.EventLog.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\System.Diagnostics.EventLog.dll" SelfReg="false"/>
+    <ROW File="System.IO.Pipelines.dll" Component_="System.IO.Pipelines.dll" FileName="SYSTEM~4.DLL|System.IO.Pipelines.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\System.IO.Pipelines.dll" SelfReg="false"/>
+    <ROW File="System.Management.dll" Component_="System.Management.dll" FileName="SYSTEM~5.DLL|System.Management.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\System.Management.dll" SelfReg="false"/>
+    <ROW File="System.ServiceProcess.ServiceController.dll" Component_="System.ServiceProcess.ServiceController.dll" FileName="SYSTEM~6.DLL|System.ServiceProcess.ServiceController.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\System.ServiceProcess.ServiceController.dll" SelfReg="false"/>
+    <ROW File="System.Text.Encodings.Web.dll" Component_="System.Text.Encodings.Web.dll" FileName="SYSTEM~7.DLL|System.Text.Encodings.Web.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\System.Text.Encodings.Web.dll" SelfReg="false"/>
+    <ROW File="System.Text.Json.dll" Component_="System.Text.Json.dll" FileName="SYSTEM~8.DLL|System.Text.Json.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\System.Text.Json.dll" SelfReg="false"/>
+    <ROW File="System.Text.Encodings.Web.dll_1" Component_="System.Text.Encodings.Web.dll_1" FileName="SYSTEM~1.DLL|System.Text.Encodings.Web.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll" SelfReg="false"/>
+    <ROW File="System.Diagnostics.EventLog.dll_1" Component_="System.Diagnostics.EventLog.dll_1" FileName="SYSTEM~1.DLL|System.Diagnostics.EventLog.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll" SelfReg="false"/>
+    <ROW File="System.Diagnostics.EventLog.Messages.dll" Component_="System.Diagnostics.EventLog.Messages.dll" FileName="SYSTEM~2.DLL|System.Diagnostics.EventLog.Messages.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.Messages.dll" SelfReg="false"/>
+    <ROW File="System.Management.dll_1" Component_="System.Management.dll_1" FileName="SYSTEM~3.DLL|System.Management.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll" SelfReg="false"/>
+    <ROW File="System.ServiceProcess.ServiceContr_1_oller.dll" Component_="System.ServiceProcess.ServiceContr_1_oller.dll" FileName="SYSTEM~4.DLL|System.ServiceProcess.ServiceController.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\runtimes\win\lib\net8.0\System.ServiceProcess.ServiceController.dll" SelfReg="false"/>
+    <ROW File="appsettings.json" Component_="NoAutoCheckpointsSVC.runtimeconfig.json" FileName="APPSET~1.JSO|appsettings.json" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\appsettings.json" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.Abstractions.dll" Component_="Microsoft.Extensions.Configuration.Abstractions.dll" FileName="MICROS~1.DLL|Microsoft.Extensions.Configuration.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.Binder.dll" Component_="Microsoft.Extensions.Configuration.Binder.dll" FileName="MICROS~2.DLL|Microsoft.Extensions.Configuration.Binder.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Configuration.Binder.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.CommandLine.dll" Component_="Microsoft.Extensions.Configuration.CommandLine.dll" FileName="MICROS~3.DLL|Microsoft.Extensions.Configuration.CommandLine.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Configuration.CommandLine.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.dll" Component_="Microsoft.Extensions.Configuration.dll" FileName="MICROS~4.DLL|Microsoft.Extensions.Configuration.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Configuration.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.EnvironmentVariables.dll" Component_="Microsoft.Extensions.Configuration.EnvironmentVariables.dll" FileName="MICROS~5.DLL|Microsoft.Extensions.Configuration.EnvironmentVariables.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Configuration.EnvironmentVariables.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.FileExtensions.dll" Component_="Microsoft.Extensions.Configuration.FileExtensions.dll" FileName="MICROS~6.DLL|Microsoft.Extensions.Configuration.FileExtensions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.Json.dll" Component_="Microsoft.Extensions.Configuration.Json.dll" FileName="MICROS~7.DLL|Microsoft.Extensions.Configuration.Json.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Configuration.UserSecrets.dll" Component_="Microsoft.Extensions.Configuration.UserSecrets.dll" FileName="MICROS~8.DLL|Microsoft.Extensions.Configuration.UserSecrets.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Component_="Microsoft.Extensions.DependencyInjection.Abstractions.dll" FileName="MICROS~9.DLL|Microsoft.Extensions.DependencyInjection.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.DependencyInjection.dll" Component_="Microsoft.Extensions.DependencyInj_1_ection.dll" FileName="MICRO~10.DLL|Microsoft.Extensions.DependencyInjection.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.DependencyModel.dll" Component_="Microsoft.Extensions.DependencyModel.dll" FileName="MICRO~11.DLL|Microsoft.Extensions.DependencyModel.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.DependencyModel.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Diagnostics.Abstractions.dll" Component_="Microsoft.Extensions.Diagnostics.Abstractions.dll" FileName="MICRO~12.DLL|Microsoft.Extensions.Diagnostics.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Diagnostics.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Diagnostics.dll" Component_="Microsoft.Extensions.Diagnostics.dll" FileName="MICRO~13.DLL|Microsoft.Extensions.Diagnostics.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Diagnostics.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.FileProviders.Abstractions.dll" Component_="Microsoft.Extensions.FileProviders.Abstractions.dll" FileName="MICRO~14.DLL|Microsoft.Extensions.FileProviders.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.FileProviders.Physical.dll" Component_="Microsoft.Extensions.FileProviders.Physical.dll" FileName="MICRO~15.DLL|Microsoft.Extensions.FileProviders.Physical.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.FileSystemGlobbing.dll" Component_="Microsoft.Extensions.FileSystemGlobbing.dll" FileName="MICRO~16.DLL|Microsoft.Extensions.FileSystemGlobbing.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Hosting.Abstractions.dll" Component_="Microsoft.Extensions.Hosting.Abstractions.dll" FileName="MICRO~17.DLL|Microsoft.Extensions.Hosting.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Hosting.dll" Component_="Microsoft.Extensions.Hosting.dll" FileName="MICRO~18.DLL|Microsoft.Extensions.Hosting.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Hosting.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Hosting.WindowsServices.dll" Component_="Microsoft.Extensions.Hosting.WindowsServices.dll" FileName="MICRO~19.DLL|Microsoft.Extensions.Hosting.WindowsServices.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Hosting.WindowsServices.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.Abstractions.dll" Component_="Microsoft.Extensions.Logging.Abstractions.dll" FileName="MICRO~20.DLL|Microsoft.Extensions.Logging.Abstractions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.Configuration.dll" Component_="Microsoft.Extensions.Logging.Configuration.dll" FileName="MICRO~21.DLL|Microsoft.Extensions.Logging.Configuration.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Logging.Configuration.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.Console.dll" Component_="Microsoft.Extensions.Logging.Console.dll" FileName="MICRO~22.DLL|Microsoft.Extensions.Logging.Console.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Logging.Console.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.Debug.dll" Component_="Microsoft.Extensions.Logging.Debug.dll" FileName="MICRO~23.DLL|Microsoft.Extensions.Logging.Debug.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Logging.Debug.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.dll" Component_="Microsoft.Extensions.Logging.dll" FileName="MICRO~24.DLL|Microsoft.Extensions.Logging.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Logging.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.EventLog.dll" Component_="Microsoft.Extensions.Logging.EventLog.dll" FileName="MICRO~25.DLL|Microsoft.Extensions.Logging.EventLog.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Logging.EventLog.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Logging.EventSource.dll" Component_="Microsoft.Extensions.Logging.EventSource.dll" FileName="MICRO~26.DLL|Microsoft.Extensions.Logging.EventSource.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Logging.EventSource.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Options.ConfigurationExtensions.dll" Component_="Microsoft.Extensions.Options.ConfigurationExtensions.dll" FileName="MICRO~27.DLL|Microsoft.Extensions.Options.ConfigurationExtensions.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Options.dll" Component_="Microsoft.Extensions.Options.dll" FileName="MICRO~28.DLL|Microsoft.Extensions.Options.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Options.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Extensions.Primitives.dll" Component_="Microsoft.Extensions.Primitives.dll" FileName="MICRO~29.DLL|Microsoft.Extensions.Primitives.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\Microsoft.Extensions.Primitives.dll" SelfReg="false"/>
+    <ROW File="naclib.dll" Component_="naclib.dll" FileName="naclib.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\naclib.dll" SelfReg="false"/>
+    <ROW File="naclib.pdb" Component_="naclib.dll" FileName="naclib.pdb" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\naclib.pdb" SelfReg="false"/>
+    <ROW File="NoAutoCheckpointsSVC.deps.json" Component_="NoAutoCheckpointsSVC.runtimeconfig.json" FileName="NOAUTO~2.JSO|NoAutoCheckpointsSVC.deps.json" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\NoAutoCheckpointsSVC.deps.json" SelfReg="false"/>
+    <ROW File="NoAutoCheckpointsSVC.dll" Component_="NoAutoCheckpointsSVC.dll" FileName="NOAUTO~1.DLL|NoAutoCheckpointsSVC.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\NoAutoCheckpointsSVC\bin\x64\Release\net8.0-windows\NoAutoCheckpointsSVC.dll" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="249"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="252"/>
+    <ROW Action="AI_DownloadPrereq" Condition="AI_BOOTSTRAPPER AND (NOT AI_PrereqsFulfilled)" Sequence="695"/>
+    <ROW Action="AI_ExtractPrereq" Condition="AI_BOOTSTRAPPER AND (NOT AI_PrereqsFulfilled)" Sequence="696"/>
+    <ROW Action="AI_InstallPrePrerequisite" Condition="AI_BOOTSTRAPPER AND (NOT AI_PrereqsFulfilled)" Sequence="697"/>
+    <ROW Action="AI_VerifyPrePrereq" Condition="AI_BOOTSTRAPPER AND (NOT AI_PrereqsFulfilled)" Sequence="698"/>
+    <ROW Action="AI_CleanPrePrereq" Condition="AI_BOOTSTRAPPER AND (NOT AI_PrereqsFulfilled)" Sequence="699"/>
+    <ROW Action="AI_AppSearchEx" Condition="AI_BOOTSTRAPPER" Sequence="251"/>
+    <ROW Action="AI_DetectSoftware" Sequence="151"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="MSIBuild" BuildOrder="1" BuildType="0" PackageFileName="NoAutoCheckPoints" Languages="en" InstallationType="4" SummInfoMetadata="Page Count:450" ExtUI="true" UseLargeSchema="true" MsiPackageType="x64"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="Themes.aip" Path="&lt;AI_FRAGS&gt;Themes.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
+    <ROW Action="AI_DownloadPrereq" Description="Downloading prerequisite software" DescriptionLocId="ActionText.Description.AI_DownloadPrereq" Template="[1]" TemplateLocId="ActionText.Template.AI_DownloadPrereq"/>
+    <ROW Action="AI_ExtractPrereq" Description="Extracting prerequisite software" DescriptionLocId="ActionText.Description.AI_ExtractPrereq" Template="[1]" TemplateLocId="ActionText.Template.AI_ExtractPrereq"/>
+    <ROW Action="AI_InstallPostPrerequisite" Description="Configuring prerequisite software" DescriptionLocId="ActionText.Description.AI_InstallPrerequisite" Template="[1]" TemplateLocId="ActionText.Template.AI_InstallPrerequisite"/>
+    <ROW Action="AI_InstallPrePrerequisite" Description="Configuring prerequisite software" DescriptionLocId="ActionText.Description.AI_InstallPrerequisite" Template="[1]" TemplateLocId="ActionText.Template.AI_InstallPrerequisite"/>
+    <ROW Action="AI_InstallPrerequisite" Description="Configuring prerequisite software" DescriptionLocId="ActionText.Description.AI_InstallPrerequisite" Template="[1]" TemplateLocId="ActionText.Template.AI_InstallPrerequisite"/>
+    <ROW Action="AI_VerifyPrePrereq" Description="Verifying prerequisites" DescriptionLocId="ActionText.Description.AI_VerifyPrereq" Template="[1] was not installed correctly." TemplateLocId="ActionText.Template.AI_VerifyPrereq"/>
+    <ROW Action="AI_VerifyPrereq" Description="Verifying prerequisites" DescriptionLocId="ActionText.Description.AI_VerifyPrereq" Template="[1] was not installed correctly." TemplateLocId="ActionText.Template.AI_VerifyPrereq"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
+    <ROW Name="SoftwareDetector.dll" SourcePath="&lt;AI_CUSTACTS&gt;SoftwareDetector.dll"/>
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="file_deleter.ps1" SourcePath="&lt;AI_SCRIPTS&gt;file_deleter.ps1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_RollbackPrereq" Condition="1" Ordering="102"/>
+    <ROW Dialog_="ExitDialog" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="301"/>
+    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="103"/>
+    <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_CleanPrereq" Condition="1" Ordering="101"/>
+    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_RollbackPrePrereq" Condition="1" Ordering="104"/>
+    <ROW Dialog_="ExitDialog" Control_="Finish" Event="DoAction" Argument="AI_CleanPrePrereq" Condition="1" Ordering="302"/>
+    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_CleanPrePrereq" Condition="1" Ordering="105"/>
+    <ROW Dialog_="UserExit" Control_="Finish" Event="DoAction" Argument="AI_CleanPrePrereq" Condition="1" Ordering="102"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="ref_Dir" Component_="ref" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_AppSearchEx" Type="1" Source="Prereq.dll" Target="DoAppSearchEx"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_CleanPrePrereq" Type="65" Source="Prereq.dll" Target="CleanPrereq" WithoutSeq="true"/>
+    <ROW Action="AI_CleanPrereq" Type="65" Source="Prereq.dll" Target="CleanPrereq" WithoutSeq="true"/>
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DetectSoftware" Type="257" Source="SoftwareDetector.dll" Target="OnDetectSoftware"/>
+    <ROW Action="AI_DownloadPrereq" Type="1" Source="Prereq.dll" Target="DownloadPrereq"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_ExtractPrereq" Type="65" Source="Prereq.dll" Target="ExtractPrereq"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_InstallPostPrerequisite" Type="1" Source="Prereq.dll" Target="InstallPostPrereq"/>
+    <ROW Action="AI_InstallPrePrerequisite" Type="65" Source="Prereq.dll" Target="InstallPrePrereq"/>
+    <ROW Action="AI_InstallPrerequisite" Type="1" Source="Prereq.dll" Target="InstallPrereq"/>
+    <ROW Action="AI_MigrateInstallerProps" Type="1" Source="aicustact.dll" Target="MigrateInstallerProps"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Type="65" Source="aicustact.dll" Target="PreserveInstallType"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH" Target="[AI_SETUPEXEPATH_ORIGINAL]"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_ResolvePropertyBaseFolder" Type="1" Source="aicustact.dll" Target="ResolvePropertyBaseFolder" WithoutSeq="true"/>
+    <ROW Action="AI_RestoreInstallerProps" Type="1" Source="aicustact.dll" Target="RestoreInstallerProps" WithoutSeq="true"/>
+    <ROW Action="AI_RollbackPrePrereq" Type="65" Source="Prereq.dll" Target="RollbackPrePrereq" WithoutSeq="true"/>
+    <ROW Action="AI_RollbackPrereq" Type="65" Source="Prereq.dll" Target="RollbackPrereq" WithoutSeq="true"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="AI_VerifyPrePrereq" Type="1" Source="Prereq.dll" Target="VerifyPrePrereq"/>
+    <ROW Action="AI_VerifyPrereq" Type="1" Source="Prereq.dll" Target="VerifyPrereq"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFiles64Folder]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
+    <ROW Feature_="MainFeature" Component_="APPDIR"/>
+    <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="A0BFC224E0E9125ADE0B2DBF343"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="ref"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="NoAutoCheckpointsSVC.exe"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="NoAutoCheckpointsSVC.runtimeconfig.json"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Serilog.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Serilog.Settings.Configuration.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Serilog.Sinks.Console.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Serilog.Sinks.File.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.CodeDom.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.Diagnostics.DiagnosticSource.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.Diagnostics.EventLog.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.IO.Pipelines.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.Management.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.ServiceProcess.ServiceController.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.Text.Encodings.Web.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.Text.Json.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.Text.Encodings.Web.dll_1"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.Diagnostics.EventLog.dll_1"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.Diagnostics.EventLog.Messages.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.Management.dll_1"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="System.ServiceProcess.ServiceContr_1_oller.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Configuration.Abstractions.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Configuration.Binder.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Configuration.CommandLine.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Configuration.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Configuration.EnvironmentVariables.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Configuration.FileExtensions.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Configuration.Json.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Configuration.UserSecrets.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.DependencyInjection.Abstractions.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.DependencyInj_1_ection.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.DependencyModel.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Diagnostics.Abstractions.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Diagnostics.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.FileProviders.Abstractions.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.FileProviders.Physical.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.FileSystemGlobbing.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Hosting.Abstractions.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Hosting.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Hosting.WindowsServices.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Logging.Abstractions.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Logging.Configuration.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Logging.Console.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Logging.Debug.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Logging.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Logging.EventLog.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Logging.EventSource.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Options.ConfigurationExtensions.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Options.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="Microsoft.Extensions.Primitives.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="naclib.dll"/>
+    <ROW Feature_="A0BFC224E0E9125ADE0B2DBF343" Component_="NoAutoCheckpointsSVC.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1397"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_MigrateInstallerProps" Condition="SETUPEXEDIR AND ((UILevel = 2) OR (UILevel = 3))" Sequence="6598"/>
+    <ROW Action="AI_VerifyPrereq" Sequence="1101"/>
+    <ROW Action="AI_AppSearchEx" Sequence="102"/>
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_PRESERVE_INSTALL_TYPE" Sequence="199"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="103"/>
+    <ROW Action="AI_DownloadPrereq" Sequence="1296"/>
+    <ROW Action="AI_ExtractPrereq" Sequence="1297"/>
+    <ROW Action="AI_InstallPrerequisite" Sequence="1298"/>
+    <ROW Action="AI_InstallPostPrerequisite" Sequence="1301"/>
+    <ROW Action="AI_CleanPrereq" Sequence="1302"/>
+    <ROW Action="AI_InstallPrePrerequisite" Condition="Installed" Sequence="1299"/>
+    <ROW Action="AI_AppSearchEx" Sequence="102"/>
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 600)" Description="[ProductName] cannot be installed on [WindowsTypeNT60Display]." DescriptionLocId="AI.LaunchCondition.NoNT60" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="AI_DETECTED_INTERNET_CONNECTION" Description="[ProductName] requires an active Internet connection for installation. Please check your network configuration and proxy settings." DescriptionLocId="AI.LaunchCondition.Internet" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="A0BFC224E0E9125ADE0B2DBF343" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]\[ProductVersion]" Name="A0BFC224E0E9125ADE0B2DBF343" Value="1" Component_="A0BFC224E0E9125ADE0B2DBF343"/>
+    <ROW Registry="AdvancedInstaller" Root="-1" Key="Software\Caphyon\Advanced Installer" Name="\"/>
+    <ROW Registry="Caphyon" Root="-1" Key="Software\Caphyon" Name="\"/>
+    <ROW Registry="Manufacturer" Root="-1" Key="Software\[Manufacturer]" Name="\"/>
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Prereqs" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs" Name="\"/>
+    <ROW Registry="ProductCode_1" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]" Name="\"/>
+    <ROW Registry="ProductName" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="\"/>
+    <ROW Registry="ProductVersion_1" Root="-1" Key="Software\Caphyon\Advanced Installer\Prereqs\[ProductCode]\[ProductVersion]" Name="\"/>
+    <ROW Registry="Software" Root="-1" Key="Software" Name="\"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiServCtrlComponent">
+    <ROW ServiceControl="NoAutoCheckpointsSVC.exe" Name="NoAutoCheckpointsSVC.exe" Event="161" Wait="1" Component_="NoAutoCheckpointsSVC.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiServInstComponent">
+    <ROW ServiceInstall="NoAutoCheckpointsSVC.exe" Name="NoAutoCheckpointsSVC.exe" DisplayName="NoAutoCheckpoints" ServiceType="16" StartType="2" ErrorControl="1" Component_="NoAutoCheckpointsSVC.exe" Description="Disable automatic checkpoints on newly created Hyper-V VMs"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
+    <ROW PrereqKey="A0BFC224E0E9125ADE0B2DBF343" DisplayName=".NET Desktop Runtime 8.0.20 x64" VersionMin="8.0" SetupFileUrl="https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.20/windowsdesktop-runtime-8.0.20-win-x64.exe" Location="1" ExactSize="58466840" WinNTVersions="Windows 9x/ME/NT/2000/XP/Vista/Windows 7/Windows 8 x86/Windows 8.1 x86/Windows 10 x86" WinNT64Versions="Windows 7 RTM x64, Windows 8 x64, Windows Server 2012 x64, Windows 10 version 1507 x64, Windows 10 version 1511 x64" Operator="1" NoUiComLine="/q /norestart" Options="fx" MD5="f60af75c4b3c2ff8b41044136736d45a" TargetName=".NET 8.0" Feature="A0BFC224E0E9125ADE0B2DBF343"/>
+    <ATTRIBUTE name="PrereqsOrder" value="A0BFC224E0E9125ADE0B2DBF343"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PreReqSearchComponent">
+    <ROW SearchKey="A0BFC224E0E9125ADE0B2DBF343SystemFo" Prereq="A0BFC224E0E9125ADE0B2DBF343" SearchType="14" SearchString="[ProgramFiles64Folder]dotnet\shared\Microsoft.WindowsDesktop.App" VerMin="8.0.20" Order="1" Property="PreReqSearch_A0BFC224E0E9125ADE0B2D"/>
+  </COMPONENT>
+</DOCUMENT>
