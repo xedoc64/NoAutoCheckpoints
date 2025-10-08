@@ -23,6 +23,7 @@ namespace NoAutoCheckpointsSVC
                 Log.Debug("App version: {0}", appVersion);
             }
 
+            // check required permissions
             naclib.PermissionCheck permissionCheck = new();
 
             if (permissionCheck.permission == naclib.PermissionCheck.PermissionType.PermissionFailed)
@@ -34,6 +35,7 @@ namespace NoAutoCheckpointsSVC
 
         public void Run()
         {
+            // subscribe to the event log
             if (SubscribeToEventLog(eventLogPath, eventLogQuery))
             {
                 Log.Debug("Event log subscribed.");
@@ -45,13 +47,20 @@ namespace NoAutoCheckpointsSVC
             }
         }
 
+        /// <summary>
+        /// Called when service receive a stop request
+        /// </summary>
         public void Stop()
         {
             Log.Debug("Service stop requested");
+            // Dispose the watchcer
             DisposeWatcher(watcher);
             Log.Information("Service stopped");
         }
 
+        /// <summary>
+        /// Setup the SeriLog logger
+        /// </summary>
         private static void SetupStaticLogger()
         {
             string SettingsFile = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\appsettings.json";
@@ -77,6 +86,12 @@ namespace NoAutoCheckpointsSVC
             Log.Debug("Logger created");
         }
 
+        /// <summary>
+        /// Subscribes to the Windows event log
+        /// </summary>
+        /// <param name="logPath"></param>
+        /// <param name="logQuery"></param>
+        /// <returns>true on success</returns>
         private static bool SubscribeToEventLog(string logPath, string logQuery)
         {
             try
@@ -109,6 +124,11 @@ namespace NoAutoCheckpointsSVC
             }
         }
 
+        /// <summary>
+        /// Will be called, if logQuery triggered
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e">event log entry</param>
         private static void EventLogEventRead(object? sender, EventRecordWrittenEventArgs e)
         {
             if (e.EventRecord != null)
@@ -124,7 +144,7 @@ namespace NoAutoCheckpointsSVC
 
                 vm = new naclib.VM((string)logEventProps[0]);
                 Log.Information("New VM detected. ID: {0}", logEventProps[0]);
-                Log.Information("AutoSnaphot: {0}", vm.AutoSnapshotEnabled);
+                Log.Information("AutoSnaphot: {0}", vm.AutoCheckpointsEnabled);
                 string setVM = vm.SetAutoCheckpoints();
                 if (string.IsNullOrEmpty(setVM))
                 {
@@ -138,6 +158,10 @@ namespace NoAutoCheckpointsSVC
             }
         }
 
+        /// <summary>
+        /// Disable and dispose the watcher
+        /// </summary>
+        /// <param name="watcher">EventLogWatcher object</param>
         private static void DisposeWatcher(EventLogWatcher? watcher)
         {
             if (watcher != null)
@@ -148,6 +172,10 @@ namespace NoAutoCheckpointsSVC
             }
         }
 
+        /// <summary>
+        /// Disable the watcher
+        /// </summary>
+        /// <param name="watcher">EventLogWatcher object</param>
         private static void DisableWatcher(EventLogWatcher? watcher)
         {
             if (watcher != null)
@@ -157,6 +185,10 @@ namespace NoAutoCheckpointsSVC
             }
         }
 
+        /// <summary>
+        /// Enable the watcher
+        /// </summary>
+        /// <param name="watcher">EventLogWatcher object</param>
         private static void EnableWatcher(EventLogWatcher? watcher)
         {
             if (watcher != null)

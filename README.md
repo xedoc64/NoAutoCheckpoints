@@ -20,3 +20,23 @@ and set the corresponding VM setting with WMI.
 This project also contains a CLI version. You can use this, if you want a portable solution (create a portable.dat in the same folder
 where the executable lies to store log files in the same folder). You need to be part of the group "Administrators" oder "Hyper-V Administrators".
 I recommend to use the Windows service.
+
+<br>
+
+# Build informations
+
+## Tools needed:
+
+- VS 2022 in any variant (or VS Code)
+- .NET 8 SDK
+- To create the MSI setup file for the Windows service: Cayphoon Advanced Installer Professional.
+
+
+
+
+# Disclaimers
+A free license for Cayphoon Advanced Installer Professional was kindly provided by Cayphoon. You can read all about the free
+open source license here [Free license for open source projects](https://www.advancedinstaller.com/free-license.html)
+
+AI (with brain) was used to create parts of the documentation and source code.
+

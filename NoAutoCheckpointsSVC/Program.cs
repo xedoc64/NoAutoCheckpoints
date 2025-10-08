@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 
 var builder = Host.CreateDefaultBuilder(args);
+// on debug run as command line app for easy debugging
 
 #if DEBUG
 builder.ConfigureServices((hostContext, services) =>
@@ -11,12 +12,15 @@ builder.ConfigureServices((hostContext, services) =>
     services.AddSingleton<nacSVC>();
 });
 #else
+// Command line arguments
 bool installService = args.Contains("--installService", StringComparer.OrdinalIgnoreCase);
 bool uninstallService = args.Contains("--uninstallService", StringComparer.OrdinalIgnoreCase);
 bool startService = args.Contains("--startService", StringComparer.OrdinalIgnoreCase);
 
+// get assembly path
 var quotedPath = $"\"{Assembly.GetExecutingAssembly().Location.Replace("NoAutoCheckpointsSVC.dll", "NoAutoCheckpointsSVC.exe")}\"";
 
+// --installService and --uninstallService can't be used together
 if (installService && uninstallService)
 {
     Console.Error.WriteLine("Error: Only one of --installService or --uninstallService can be used.");
@@ -25,6 +29,7 @@ if (installService && uninstallService)
 
 if (installService)
 {
+    // install the service
     Console.WriteLine("Installing service...");
     var process = Process.Start(new ProcessStartInfo
     {
@@ -37,6 +42,7 @@ if (installService)
     Console.WriteLine("Service installed");
     if (startService)
     {
+        // start the service if also --startService was passed
         Console.WriteLine("Starting service...");
         process = Process.Start(new ProcessStartInfo
         {
@@ -53,6 +59,7 @@ if (installService)
 
 if (uninstallService)
 {
+    // remove the service
     Console.WriteLine("Stopping service...");
     var process = Process.Start(new ProcessStartInfo
     {
@@ -75,6 +82,7 @@ if (uninstallService)
     return;
 }
 
+// create builder context
 builder.UseWindowsService(options =>
 {
     options.ServiceName = "NoAutoCheckpointsSVC";

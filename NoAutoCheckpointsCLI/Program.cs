@@ -17,6 +17,7 @@ class Program
 
         Log.Information("NoAutoCheckpointsCLI started");
 
+        // check required permissions
         naclib.PermissionCheck permissionCheck = new naclib.PermissionCheck();
 
         if (permissionCheck.permission == naclib.PermissionCheck.PermissionType.PermissionFailed)
@@ -25,11 +26,12 @@ class Program
             Environment.Exit(2);
         }
 
+        // subscribe to the event log and wait for key pressed to exit the program
         if (subscribeToEventLog(eventLogPath, eventLogQuery))
         {
             Log.Information("Event log subscribed. Press a key to end the program");
             Task.Run(() => Console.ReadKey()).Wait();
-            DisableWatcher(watcher);
+            DisposeWatcher(watcher);
             Environment.Exit(0);
         }
         else
@@ -39,6 +41,9 @@ class Program
         }
     }
 
+    /// <summary>
+    /// Setup the SeriLog logger
+    /// </summary>
     private static void SetupStaticLogger()
     {
         bool isPortable = File.Exists(Path.Combine(AppContext.BaseDirectory, "portable.dat"));
@@ -47,6 +52,8 @@ class Program
             .AddJsonFile("appsettings.json")
             .Build();
 
+        // if exists a file called portable.dat in the same directory as the assembly
+        // the log will be written to the sub directory "logs" instead of %AppData%
         if (isPortable)
         {
             var portableLogPath = Path.Combine(AppContext.BaseDirectory, "logs", "portable-log-.txt");
@@ -67,6 +74,12 @@ class Program
         }        
     }
 
+    /// <summary>
+    /// Subscribes to the Windows event log
+    /// </summary>
+    /// <param name="logPath"></param>
+    /// <param name="logQuery"></param>
+    /// <returns>true on success</returns>
     private static bool subscribeToEventLog(string logPath, string logQuery)
     {
         try
@@ -100,6 +113,11 @@ class Program
         }
     }
 
+    /// <summary>
+    /// Will be called, if logQuery triggered
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e">event log entry</param>
     private static void EventLogEventRead(object? sender, EventRecordWrittenEventArgs e)
     {
         if (e.EventRecord != null)
@@ -107,6 +125,7 @@ class Program
             // disable the watcher to prevent that the watcher is fired twice
             DisableWatcher(watcher);
             string[] xPathRefs = new string[1];
+            // VM ID
             xPathRefs[0] = "Event/UserData/VmlEventLog/VmId";
 
             IEnumerable<String> xPathEnum = xPathRefs;
@@ -115,9 +134,12 @@ class Program
 
             IList<object> logEventProps = ((EventLogRecord)e.EventRecord).GetPropertyValues(logPropertyContext);
 
+            // create VM object
             vm = new naclib.VM((string)logEventProps[0]);
             Log.Information("New VM detected. ID: {0}", logEventProps[0]);
-            Log.Information("AutoSnaphot: {0}", vm.AutoSnapshotEnabled);
+            Log.Information("AutoSnaphot: {0}", vm.AutoCheckpointsEnabled);
+
+            // Disable automatic checkpoints
             string setVM = vm.SetAutoCheckpoints();
             if (string.IsNullOrEmpty(setVM))
             {
@@ -131,6 +153,10 @@ class Program
         }
     }
 
+    /// <summary>
+    /// Disable event log watcher
+    /// </summary>
+    /// <param name="watcher">EventLogWatcher object</param>
     private static void DisableWatcher(EventLogWatcher? watcher)
     {
         if (watcher != null)
@@ -141,12 +167,30 @@ class Program
         }
     }
 
+    /// <summary>
+    /// Enable event log watcher
+    /// </summary>
+    /// <param name="watcher">EventLogWatcher object</param>
     private static void EnableWatcher(EventLogWatcher? watcher)
     {
         if (watcher != null)
         {
             Log.Debug("watcher enabled");
             watcher.Enabled = true;
+            watcher.Dispose();
+        }
+    }
+
+    /// <summary>
+    /// Disable and dispose the watcher
+    /// </summary>
+    /// <param name="watcher">EventLogWatcher object</param>
+    private static void DisposeWatcher(EventLogWatcher? watcher)
+    {
+        if (watcher != null)
+        {
+            Log.Debug("Event watcher disabled");
+            watcher.Enabled = false;
             watcher.Dispose();
         }
     }
