@@ -9,7 +9,7 @@ var builder = Host.CreateDefaultBuilder(args);
 builder.ConfigureServices((hostContext, services) =>
 {
     services.AddHostedService<Worker>();
-    services.AddSingleton<nacSVC>();
+    services.AddSingleton<NacSVC>();
 });
 #else
 // Command line arguments
